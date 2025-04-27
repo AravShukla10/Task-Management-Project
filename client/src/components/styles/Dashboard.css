@@ -1,0 +1,381 @@
+/* src/components/styles/Dashboard.css */
+
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+  }
+  
+  /* Container */
+  .dashboard-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+  
+  /* Header */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111827;
+  }
+  .logout-button {
+    background: linear-gradient(to right, #ff5858, #f857a6);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+  .logout-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Add Task Form */
+  .task-form {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+  }
+  .task-form h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+  .task-form input,
+  .task-form textarea,
+  .task-form select {
+    width: 95%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    color: #374151;
+  }
+  .task-form button {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .task-form button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+  }
+  
+  /* Filters */
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .filter-button {
+    background: transparent;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .filter-button.active {
+    background: linear-gradient(to right, #6366f1, #3b82f6);
+    border: none;
+    color: #ffffff;
+  }
+  .filter-button:hover {
+    background: #cbd5e1;
+  }
+  
+  /* Task List */
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+  .task-item {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    padding: 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column; /* CHANGED from row to column */
+    align-items: flex-start; /* Align content to the left */
+    transition: transform 0.2s;
+}
+
+  .task-item:hover {
+    transform: translateY(-3px);
+  }
+  .task-details {
+    width: 100%; /* FULL width */
+    text-align: left; /* Ensure left alignment */
+    margin-bottom: 1rem; /* Add some spacing from buttons */
+}
+
+  .task-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+  .task-title.completed {
+    text-decoration: line-through;
+    color: #9ca3af;
+  }
+  .task-desc {
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+  .task-meta {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  .priority-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
+  .priority-low {
+    background: #d1fae5;
+    color: #065f46;
+  }
+  .priority-medium {
+    background: #fef9c3;
+    color: #92400e;
+  }
+  .priority-high {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  
+  /* Task Buttons */
+  .task-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* allow buttons to wrap on smaller screens */
+}
+
+.task-title, .task-desc, .task-meta {
+    text-align: left;
+}
+
+  .task-button {
+    padding: 0.5rem 0.75rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.2s;
+  }
+  .task-button.complete {
+    background-color: #10b981;
+  }
+  .task-button.complete:hover {
+    background-color: #059669;
+  }
+  .task-button.delete {
+    background-color: #ef4444;
+  }
+  .task-button.delete:hover {
+    background-color: #dc2626;
+  }
+  .task-button.view {
+    background-color: #3b82f6;
+  }
+  .task-button.view:hover {
+    background-color: #2563eb;
+  }
+  .task-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* No Tasks */
+  .no-tasks {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 2rem;
+  }
+  
+  /* View Modal */
+/* View Task Modal */
+/* View Task Modal */
+.view-task-overlay {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.view-task-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; /* Allow dynamic width */
+    max-width: 600px; /* Maximum width of the modal */
+    text-align: center;
+    max-height: 80vh; /* Prevent the modal from growing too tall */
+    overflow-y: auto; /* Allow scrolling if content exceeds max-height */
+    word-wrap: break-word; /* Prevent long words from breaking out */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Optional: Adding animation for smooth fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-button {
+    margin-top: 1rem;
+    background-color: #ef4444;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    background-color: #dc2626;
+}
+
+  
+  /* Responsive */
+  @media (max-width: 640px) {
+    .dashboard-container {
+      padding: 1rem;
+    }
+  }
+  
+  /* Add this below your existing Filters section */
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .status-filters {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .priority-filter {
+    position: relative;
+  }
+  
+  .priority-filter-button {
+    background: linear-gradient(to right, #6366f1, #3b82f6);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .priority-filter-button:hover {
+    background: linear-gradient(to right, #3b82f6, #6366f1);
+  }
+  
+  .priority-dropdown {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    z-index: 10;
+  }
+  
+  .priority-dropdown-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .priority-dropdown-item:hover {
+    background: #f3f4f6;
+  }
+  
+  /* Slight improvements for responsiveness */
+  @media (max-width: 640px) {
+    .filters-container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+  
+    .priority-dropdown {
+      width: 100%;
+    }
+  }
+  
+  .task-item {
+    position: relative;
+  }
+  
+  .task-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .status-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
