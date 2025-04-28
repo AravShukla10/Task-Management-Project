@@ -11,13 +11,16 @@ function App() {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+
+
   useEffect(() => {
-
     setUser(localStorage.getItem('user'))
-
-
-
   }, []);
+
+
+
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -29,7 +32,7 @@ function App() {
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/dashboard" element={<Dashboard user={user} />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Login setUser={setUser} />} />
       </Routes>
     </div>
   );

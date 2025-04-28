@@ -20,7 +20,8 @@ function Login({ setUser }) {
       });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", res.data.username);
-      setUser(res.data.username);
+      console.log("this is username: "+ res.data.username);
+       setUser(res.data.username);
       setResponseMessage("Login successful!");
       setIsSuccess(true);
 
