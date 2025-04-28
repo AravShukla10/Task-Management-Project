@@ -2,131 +2,130 @@
 
 /* General Page */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+}
+
+/* Container */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Form Card */
+.login-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* Title */
+.login-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Inputs */
+.login-input {
+  width: 90%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: #374151;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.login-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
+  background-color: #ffffff;
+}
+
+/* Button */
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+.login-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #5a67d8, #6b46c1);
+}
+
+/* Footer Link */
+.login-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.login-footer a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  /* Container */
-  .login-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 1rem;
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* Form Card */
+}
+
+/* Responsive */
+@media (max-width: 480px) {
   .login-card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
-    animation: fadeIn 0.6s ease;
+    padding: 2rem;
   }
-  
-  /* Title */
   .login-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #1f2937;
-    text-align: center;
-    margin-bottom: 2rem;
+    font-size: 1.8rem;
   }
-  
-  /* Inputs */
-  .login-input {
-    width: 90%;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.2rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.75rem;
-    font-size: 1rem;
-    color: #374151;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  .login-input:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 8px rgba(99, 102, 241, 0.5);
-    background-color: #ffffff;
-  }
-  
-  /* Button */
-  .login-button {
-    width: 100%;
-    padding: 0.75rem;
-    background: linear-gradient(to right, #667eea, #764ba2);
-    color: #ffffff;
-    border: none;
-    border-radius: 9999px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s ease, background 0.3s ease;
-  }
-  .login-button:hover {
-    transform: scale(1.05);
-    background: linear-gradient(to right, #5a67d8, #6b46c1);
-  }
-  
-  /* Footer Link */
-  .login-footer {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    color: #6b7280;
-  }
-  .login-footer a {
-    color: #6366f1;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .login-footer a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  /* Responsive */
-  @media (max-width: 480px) {
-    .login-card {
-      padding: 2rem;
-    }
-    .login-title {
-      font-size: 1.8rem;
-    }
-  }
-  
-  /* Success and Error Message Styling */
+}
+
+/* Success and Error Message Styling */
 .response-message {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  .response-message.success {
-    background-color: #2ecc71;
-    color: white;
-  }
-  
-  .response-message.error {
-    background-color: #e74c3c;
-    color: white;
-  }
-  
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.response-message.success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.response-message.error {
+  background-color: #e74c3c;
+  color: white;
+}

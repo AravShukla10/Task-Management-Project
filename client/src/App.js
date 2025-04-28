@@ -5,11 +5,19 @@ import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
 
+    setUser(localStorage.getItem('user'))
+
+
+
+  }, []);
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
@@ -18,9 +26,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/signup" element={<Signup setUser={setUser} />} />
+        <Route path="/dashboard" element={<Dashboard user={user} />} />
         <Route path="/" element={<Login />} />
       </Routes>
     </div>

@@ -1,31 +1,37 @@
-// src/components/Signup.jsx
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
-import './styles/Signup.css';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import "./styles/Signup.css";
 
-function Signup() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [responseMessage, setResponseMessage] = useState('');
+function Signup({ setUser }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      // Make the API call to register the user
-      const res = await axios.post('http://localhost:5000/api/register', { email, password });
-      localStorage.setItem('token', res.data.token);
-      setResponseMessage('Registration successful!');
+      // Send name along with email and password
+      const res = await axios.post("http://localhost:5000/api/register", {
+        name,
+        email,
+        password,
+      });
+
+      localStorage.setItem("token", res.data.token);
+      setUser(res.data.username);
+      localStorage.setItem("user", res.data.username);
+      setResponseMessage("Registration successful!");
       setIsSuccess(true);
-      
-      // After a successful registration, navigate directly to the Dashboard after 2 seconds
+
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }, 2000);
     } catch (error) {
-      setResponseMessage(error?.response?.data?.message || 'Signup failed');
+      setResponseMessage(error?.response?.data?.message || "Signup failed");
       setIsSuccess(false);
     }
   };
@@ -36,11 +42,20 @@ function Signup() {
         <h2 className="signup-title">Sign Up</h2>
 
         <input
+          type="text"
+          placeholder="Full Name"
+          className="signup-input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <input
           type="email"
           placeholder="Email"
           className="signup-input"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
 
@@ -49,7 +64,7 @@ function Signup() {
           placeholder="Password"
           className="signup-input"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
 
@@ -58,14 +73,15 @@ function Signup() {
         </button>
 
         {responseMessage && (
-          <div className={`response-message ${isSuccess ? 'success' : 'error'}`}>
+          <div
+            className={`response-message ${isSuccess ? "success" : "error"}`}
+          >
             {responseMessage}
           </div>
         )}
 
         <p className="signup-footer">
-          Already have an account?{' '}
-          <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
     </div>

@@ -6,10 +6,10 @@ const SECRET_KEY = 'your_secret_key';
 const authenticate = (req) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) throw new Error('Unauthorized');
-  
+
   const token = authHeader.split(' ')[1];
   const decoded = jwt.verify(token, SECRET_KEY);
-  
+
   return decoded.userId;
 };
 
