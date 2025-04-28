@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const PORT = 5000;
@@ -16,7 +18,7 @@ app.use('/api', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
 // MongoDB Atlas Connection
-const MONGO_URI = 'mongodb+srv://aravshukla2004:QlSTwxINL0vKloQG@clusterone.z5dquvr.mongodb.net/task-manager?retryWrites=true&w=majority';
+const MONGO_URI = process.env.URI;
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,

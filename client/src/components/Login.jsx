@@ -30,6 +30,7 @@ function Login({ setUser }) {
       }, 2000);
     } catch (error) {
       setResponseMessage(error?.response?.data?.message || "Login failed");
+      console.log(error);
       setIsSuccess(false);
     }
   };
