@@ -35,7 +35,6 @@ export default function useTasks() {
       
     } catch (err) {
       console.error(err);
-     // alert('Failed to add task');
      return false
     }
   }, [token]);

@@ -75,14 +75,12 @@ function Dashboard({ user }) {
         (priorityOrder[a.priority] || 4) - (priorityOrder[b.priority] || 4)
     );
 
-  // Close priority dropdown when clicking outside
   const handleClickOutside = (e) => {
     if (priorityDropdownOpen && !e.target.closest(".priority-filter")) {
       setPriorityDropdownOpen(false);
     }
   };
 
-  // Add event listener for clicks outside the priority dropdown
   useState(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
@@ -93,7 +91,6 @@ function Dashboard({ user }) {
   return (
     <div className="page-wrapper">
       <div className="dashboard-container">
-        {/* Header */}
         <div className="dashboard-header">
           <h1 className="dashboard-title">My Tasks</h1>
           <div
@@ -101,7 +98,7 @@ function Dashboard({ user }) {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "1rem", // optional, adds space between items
+              gap: "1rem",
             }}
           >
             <h1>{user ? user.split(" ")[0] : ""}</h1>
@@ -111,7 +108,6 @@ function Dashboard({ user }) {
           </div>
         </div>
 
-        {/* Add Task Form */}
         <form onSubmit={handleAdd} className="task-form">
           <h2>Add New Task</h2>
           <div className="form-field">
@@ -140,10 +136,9 @@ function Dashboard({ user }) {
               <option>High</option>
             </select>
           </div>
-          <button type="submit">Add Task</button>
+          <button type="submit">Add Task</button>  
         </form>
 
-        {/* Filters */}
         <div className="filters-container">
           <div className="status-filters">
             {["All", "Active", "Completed"].map((f) => (
@@ -157,7 +152,6 @@ function Dashboard({ user }) {
             ))}
           </div>
 
-          {/* Priority Filter */}
           <div className="priority-filter">
             <button
               onClick={() => setPriorityDropdownOpen((prev) => !prev)}
@@ -185,7 +179,6 @@ function Dashboard({ user }) {
           </div>
         </div>
 
-        {/* Task List */}
         <ul className="task-list">
           {filtered.map((task) => (
             <li key={task._id} className="task-item">
@@ -206,7 +199,6 @@ function Dashboard({ user }) {
                   </p>
                 </div>
 
-                {/* Status Icon */}
                 <div className="task-status">
                   <p>Status:</p>
                   {task.status === "complete" ? (
@@ -308,7 +300,6 @@ function Dashboard({ user }) {
         />
       </div>
 
-      {/* View Task Modal */}
       {viewTask && (
         <div className="view-task-overlay">
           <div className="view-task-card">
@@ -334,7 +325,6 @@ function Dashboard({ user }) {
         </div>
       )}
 
-      {/* Delete Task Confirmation Modal */}
       {deleteTaskConfirmation && (
         <div className="view-task-overlay">
           <div className="view-task-card">

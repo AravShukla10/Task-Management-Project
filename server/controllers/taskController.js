@@ -23,26 +23,21 @@ exports.getTasks = async (req, res) => {
   }
 };
 
-// controllers/tasks.js
-
 exports.createTask = async (req, res) => {
   try {
     const userId = authenticate(req);
     const { title, description, priority } = req.body;
 
-    // 1️⃣ Pre-check for duplicate title
     const existing = await Task.findOne({ userId, title });
     if (existing) {
       return res.status(400).json({ message: 'You already have a task with that title.' });
     }
 
-    // 2️⃣ Create & save
     const task = new Task({ title, description, priority, userId });
     await task.save();
     res.status(201).json(task);
 
   } catch (error) {
-    // Fallback for any other errors (including races on the unique index)
     if (error.code === 11000 && error.keyPattern?.title) {
       return res.status(400).json({ message: 'You already have a task with that title.' });
     }

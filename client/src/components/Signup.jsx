@@ -14,7 +14,6 @@ function Signup({ setUser }) {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      // Send name along with email and password
       const res = await axios.post("http://localhost:5000/api/register", {
         name,
         email,
@@ -29,7 +28,7 @@ function Signup({ setUser }) {
 
       setTimeout(() => {
         navigate("/dashboard");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       setResponseMessage(error?.response?.data?.message || "Signup failed");
       setIsSuccess(false);

@@ -1,4 +1,3 @@
-/* src/App.js */
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -38,7 +37,6 @@ function App() {
   );
 }
 
-// Wrap App with Router to access useNavigate
 export default function WrappedApp() {
   return (
     <Router>

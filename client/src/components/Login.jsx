@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -25,10 +24,9 @@ function Login({ setUser }) {
       setResponseMessage("Login successful!");
       setIsSuccess(true);
 
-      // After successful login, navigate to the Dashboard after a brief delay
       setTimeout(() => {
         navigate("/dashboard");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       setResponseMessage(error?.response?.data?.message || "Login failed");
       console.log(error);
